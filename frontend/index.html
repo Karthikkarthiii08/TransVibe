@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Language Translator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="badge">Hugging Face · NLLB-200</div>
+      <h1 class="title">Language Translator</h1>
+      <p class="subtitle">Instant AI-powered translations across languages</p>
+    </div>
+
+    <!-- Main card -->
+    <div class="card">
+
+      <!-- Language selectors -->
+      <div class="lang-row">
+        <div class="lang-group">
+          <label for="src-lang">From</label>
+          <select id="src-lang">
+            <option value="eng_Latn">🇬🇧 English</option>
+            <option value="hin_Deva">🇮🇳 Hindi</option>
+            <option value="kan_Knda">🇮🇳 Kannada</option>
+          </select>
+        </div>
+
+        <button class="swap-btn" id="swap-btn" title="Swap languages" aria-label="Swap languages">
+          ⇄
+        </button>
+
+        <div class="lang-group">
+          <label for="tgt-lang">To</label>
+          <select id="tgt-lang">
+            <option value="hin_Deva">🇮🇳 Hindi</option>
+            <option value="eng_Latn">🇬🇧 English</option>
+            <option value="kan_Knda">🇮🇳 Kannada</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Input / Output -->
+      <div class="text-row">
+        <div class="text-group">
+          <span class="text-group-label">Input Text</span>
+          <textarea
+            id="input-text"
+            placeholder="Type or paste your text here..."
+            rows="6"
+            maxlength="500"
+            aria-label="Text to translate"
+          ></textarea>
+          <span class="char-count" id="char-count">0 / 500</span>
+        </div>
+
+        <div class="text-group">
+          <span class="text-group-label">Translation</span>
+          <div id="output-text" class="output-box" aria-live="polite">
+            <span class="output-placeholder">Translation will appear here...</span>
+          </div>
+          <button class="copy-btn" id="copy-btn" aria-label="Copy translation">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy
+          </button>
+        </div>
+      </div>
+
+      <!-- Translate button -->
+      <button class="translate-btn" id="translate-btn" aria-label="Translate text">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></svg>
+        <span id="btn-label">Translate</span>
+        <span class="spinner hidden" id="spinner"></span>
+      </button>
+
+      <!-- Error message -->
+      <div class="error-msg hidden" id="error-msg" role="alert"></div>
+
+    </div>
+
+    <!-- History -->
+    <div class="history-section" id="history-section">
+      <div class="history-header">
+        <span class="history-dot"></span>
+        <h2>Recent Translations</h2>
+      </div>
+      <ul id="history-list"></ul>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

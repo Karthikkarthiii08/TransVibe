@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# Environment variables — NEVER commit these
+.env
+.env.local
+.env.production
+
+# Misc
+.DS_Store
+*.log
