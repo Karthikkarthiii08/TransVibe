@@ -29,6 +29,21 @@ const historyList = document.getElementById("history-list");
 let history = JSON.parse(localStorage.getItem("translationHistory") || "[]");
 renderHistory();
 
+// --- Auto-fix same language selection ---
+const LANG_OPTIONS = ["eng_Latn", "hin_Deva", "kan_Knda"];
+
+srcLang.addEventListener("change", () => {
+  if (srcLang.value === tgtLang.value) {
+    tgtLang.value = LANG_OPTIONS.find(l => l !== srcLang.value);
+  }
+});
+
+tgtLang.addEventListener("change", () => {
+  if (srcLang.value === tgtLang.value) {
+    srcLang.value = LANG_OPTIONS.find(l => l !== tgtLang.value);
+  }
+});
+
 // --- Character counter ---
 inputText.addEventListener("input", () => {
   charCount.textContent = `${inputText.value.length} / 500`;
